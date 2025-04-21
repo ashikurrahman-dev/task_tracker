@@ -55,7 +55,7 @@ require_once __DIR__ ."/../../controller/auth/registerController.php";
         <div class="flex justify-between items-center mt-4 text-sm">
             <a href="<?= BASE_URL; ?>views/auth/login.php" class="text-purple-600 hover:underline">Back
                 to Sign In</a>
-            <a href="<?= BASE_URL; ?>public/forgetPassword.php" class="text-purple-600 hover:underline">Forgot Password?</a>
+            <a href="<?= BASE_URL; ?>views/auth/sendOTP.php" class="text-purple-600 hover:underline">Forgot Password?</a>
         </div>
     </div>
 </body>
