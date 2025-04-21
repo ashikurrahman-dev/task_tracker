@@ -14,7 +14,10 @@ function sendOTP()
             if ($email === '') {
                 throw new Exception('Email field can not be empty.');
             }
-            validateEmail($email);
+            // validateEmail($email);
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                throw new Exception("Invalid email.");
+            }
 
             $stmt = $pdo->prepare("SELECT * FROM users WHERE email=?");
             $stmt->execute([$email]);
@@ -47,11 +50,41 @@ function sendOTP()
                 $phpmailer->send();
             } catch (Exception $e) {
                 $error = $e->getMessage();
+                return $error;
             }
 
-            
-        } catch(Exception $e) {
-            $error = $e->getMessage();
+            header("Location: " . BASE_URL . "views/auth/verifyOTP.php?email=$email");
+            exit();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+}
+
+
+function verifyOTP()
+{
+    global $pdo;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        try {
+            $email = validateInput($_REQUEST['email']);
+            $otp = validateInput($_POST['otp']);
+
+            if ($otp === '') {
+                throw new Exception('OTP field can not be empty');
+            }
+            if ($otp != $_SESSION['otp']) {
+                throw new Exception('Invalid OTP');
+            }
+
+            $stmt = $pdo->prepare("UPDATE users SET otp=? WHERE email=?");
+            $stmt->execute([0, $email]);
+            unset($_SESSION['otp']);
+
+            header("Location: " . BASE_URL . "views/auth/resetPassword.php?email=$email");
+            exit();
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
     }
 }

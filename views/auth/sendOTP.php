@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ ."/../../controller/auth/forgetPasswordController.php";
-sendOTP();
+$error = sendOTP();
 ?>
 
 <!DOCTYPE html>
