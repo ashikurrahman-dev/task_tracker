@@ -6,8 +6,9 @@ require_once __DIR__ . "/../includes/functions.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task'])) {
     try {
         $task = validateInput($_POST['task']);
-        $stmt = $pdo->prepare("INSERT INTO task(description) VALUES(?)");
-        $stmt->execute([$task]);
+        $user_id = $_SESSION['user']['id'];
+        $stmt = $pdo->prepare("INSERT INTO task(user_id, description) VALUES(?, ?)");
+        $stmt->execute([$user_id, $task]);
     } catch (Exception $e) {
         // Optional
     }
