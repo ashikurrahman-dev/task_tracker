@@ -59,5 +59,5 @@ if (isset($_REQUEST['status']) && $_REQUEST['status'] !== 'all') {
 }
 
 // Show the view
-require_once __DIR__ . '/../views/task/allTask.php';
+require_once __DIR__ . '/../views/task/task.php';
 exit();
