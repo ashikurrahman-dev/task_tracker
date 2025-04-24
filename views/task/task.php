@@ -10,8 +10,22 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 min-h-screen py-10 px-4 font-sans">
+<body class="bg-gray-100 min-h-screen py-4 px-4 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white shadow px-16 py-2 mb-10 flex justify-between items-center">
+        <!-- Logo or App Name -->
+        <a href="<?= BASE_URL ?>controller/taskController.php" class="text-xl font-bold text-purple-700">📝 TodoApp</a>
 
+        <!-- Right Side: Username + Logout -->
+        <div class="flex items-center space-x-4">
+            <span class="text-gray-700 font-medium">
+                <?= "Ashikur Rahman" ?>
+            </span>
+            <a href="<?= BASE_URL ?>controller/auth/logoutController.php" class="text-white bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                Logout
+            </a>
+        </div>
+    </nav>
     <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg">
         <h1 class="text-3xl font-bold mb-6 text-center text-purple-700">My Todo List</h1>
 
@@ -72,7 +86,8 @@
                             <i class="fas fa-check-circle"></i>
                         </a>
                         <!-- Edit -->
-                        <a title="Edit" href="<?= BASE_URL ?>views/task/editTask.php?id=<?= $task['id'] ?>" class="text-blue-500 hover:text-blue-600">
+                        <a title="Edit" href="<?= BASE_URL ?>views/task/editTask.php?id=<?= $task['id'] ?>"
+                            class="text-blue-500 hover:text-blue-600">
                             <i class="fas fa-edit"></i>
                         </a>
                         <!-- Delete -->
@@ -87,4 +102,5 @@
     </div>
 
 </body>
+
 </html>
