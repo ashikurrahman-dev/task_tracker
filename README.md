@@ -33,7 +33,7 @@ The application uses two main tables:
 | name     | String   | User's full name     |
 | email    | String   | User's email address |
 | password | String   | Hashed password      |
-| top      | Boolean  | Top user flag        |
+| otp      | Integer  | Use forget password  |
 
 ### Tasks Table
 | Column      | Type     | Description                          |
@@ -42,26 +42,6 @@ The application uses two main tables:
 | user_id     | Integer  | Foreign key referencing users table  |
 | description | String   | Task description                     |
 | status      | Enum     | Task status (todo, in_progress, done)|
-
-## API Endpoints
-
-### User Endpoints
-- `POST /users` - Create a new user
-- `GET /users/:id` - Get user details
-- `PUT /users/:id` - Update user information
-- `DELETE /users/:id` - Delete user account
-
-### Task Endpoints
-- `POST /tasks` - Create a new task
-- `GET /tasks` - List all tasks for current user
-  - Query parameters:
-    - `status=todo` - Filter by todo tasks
-    - `status=in_progress` - Filter by in-progress tasks
-    - `status=done` - Filter by completed tasks
-- `GET /tasks/:id` - Get task details
-- `PUT /tasks/:id` - Update task
-- `DELETE /tasks/:id` - Delete task
-- `PUT /tasks/:id/status` - Update task status
 
 ## Setup Instructions
 
