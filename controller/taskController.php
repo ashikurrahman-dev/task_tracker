@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task'])) {
     } catch (Exception $e) {
         // Optional
     }
-    // Redirect to prevent form resubmission
     header('Location: ' . BASE_URL . 'controller/taskController.php');
     exit();
 }
